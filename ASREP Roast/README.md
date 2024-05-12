@@ -4,7 +4,9 @@
 
 La vulnerabilidad **ASREPRoast** ocurre cuando algún usuario del dominio tiene habilitado el atributo `DONT_REQ_PREAUTH` , este atributo permite que cualquiera pueda generar una respuesta `KRB_AS_REP` sin necesidad de realizar la autenticación previa que se realiza en el primer (`KRB_AS_REQ`) paso Kerberos.
 
-![Untitled](images/Untitled.png)
+![Fuente: [https://blog.netwrix.com/what-is-kerberos/](https://blog.netwrix.com/what-is-kerberos/)](images/Untitled.png)
+
+Fuente: [https://blog.netwrix.com/what-is-kerberos/](https://blog.netwrix.com/what-is-kerberos/)
 
 En una respuesta `KRB_AS_REP` el **KDC** responde al usuario con el ticket **TGT** y **una clave de sesión cifrada** con la contraseña de dicho usuario, esta sesión es lo que necesitamos para crackearla offline con herramientas como **Jhon The Ripper** o **Hashcat**.
 
