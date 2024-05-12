@@ -1,5 +1,3 @@
-# Untitled
-
 # Ataques a Active Directory
 
 ---
