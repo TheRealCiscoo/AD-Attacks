@@ -1,6 +1,10 @@
 # AS-REQ Roast
 
-Este ataque ocurre cuando se captura un paquete de Kerberos del tipo `KRB_AS_REQ` en el primer intercambio entre el cliente y el Domain Controller. En una petición `KRB_AS_REQ` se encuentra el **nombre de usuario** que realiza la petición, el **nombre de dominio** y un **timestamp cifrado** con la contraseña del usuario. Con estos datos podemos estructurar un hash que luego podemos intentar crackear para adquirir la contraseña de ese usuario.
+## ORIGEN DE UN AS-REQ ROAST
+
+---
+
+Este ataque ocurre con la captura un paquete de Kerberos del tipo `KRB_AS_REQ` en el primer intercambio entre el cliente y el Domain Controller. En una petición `KRB_AS_REQ` se encuentra el **nombre de usuario** que realiza la petición, el **nombre de dominio** y un **timestamp cifrado** con la contraseña del usuario. Con estos datos podemos estructurar un hash que luego podemos intentar crackear para adquirir la contraseña de ese usuario.
 
 El hash se sigue la siguiente estructura:
 
@@ -32,9 +36,9 @@ Buscaremos el paquete que contenga los valores cipher, CNameString y realm.
 
 ![Untitled](images/Untitled%204.png)
 
----
+## CRACKEO DE LOS HASHES ENCONTRADOS
 
-## ¿CÓMO CRACKEAR LOS HASHES CAPTURADOS?
+---
 
 Para crackear este hash con Hashcat solo introducimos el hash en un archivo de texto y hacemos uso del siguiente comando indicando que el módulo que usaremos será el 19900, el tipo de ataque será de fuerza bruta y, por último, el archivo donde se encuentra el hash y el diccionario que usaremos para crackear la contraseña.
 

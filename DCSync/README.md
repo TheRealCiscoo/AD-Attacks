@@ -1,6 +1,6 @@
 # DCSync
 
-## ¿CÓMO SE PRODUCE ESTA VULNERABILIDA?
+## ORIGEN DE EL DCSYNC
 
 Para entender la vulnerabilidad DCSync primero debemos entender ¿Qué es MS-DRSR?. MS-DRSR (***Microsoft Domain Replication Service Remote***) es el protocolo utilizado en un entorno de Active Directory de replicación de la base de datos NTDS.
 
@@ -13,7 +13,7 @@ Una vez entendiendo esto podemos comprender que si un usuario tuviera dichos per
 
 ---
 
-## PROVOCANDO LA VULNERABILIDAD
+## PREPARACIÓN DEL ENTORNO
 
 Para hacer que se produzca esta vulnerabilidad vamos a tomar un usuario cualquiera, sin importar si este tiene o no bajos privilegios, y vamos a darle los permisos de **DS-Replication-Get-Changes**, **DS-Replication-Get-Changes-In-Filtered-Set** y **DS-Replication-Get-Changes-All**.
 
@@ -37,11 +37,11 @@ Con esto la vulnerabilidad está presente en la red del dominio.
 
 ---
 
-## ¿CÓMO EXPLOTAR LA VULNERABILIDA?
+## EXPLOTACIÓN
 
 Si de alguna manera logramos vulnerar al usuario **daniele.ethelind** desde allí podríamos realizar la petición de la base de datos NTDS al Domain Controller y así dumpear toda la base de datos NTDS y obtener cualquier hash NTLM de cualquier usuario, incluyento de usuarios administradores.
 
-### Explotación desde Linux con `impacket` .
+### Desde Linux con `impacket` .
 
 Usaremos el módulo `***secretsdump***` de `***impacket`*** de la siguiente manera:
 
@@ -59,7 +59,7 @@ El resultado es el siguiente:
 
 ![Untitled](images/Untitled%204.png)
 
-### Explotación desde Windows con `mimikatz` .
+### Desde Windows con `mimikatz` .
 
 Si tenemos una máquina Windows agregada al dominio e iniciamos sesión con el usuario previamente vulnerado. Ahora solo nos dirigimos al navegador y pegamos el siguiente enlace [[https://github.com/ParrotSec/mimikatz/tree/master/x64](https://github.com/ParrotSec/mimikatz/tree/master/x64)] y nos descargamos el ***mimikatz.exe***.
 
@@ -90,7 +90,7 @@ Y así obtuvimos el hash NTLM del usuario Administrador desde un usuario sin pri
 
 ---
 
-## ¿CÓMO CRACKEAR UN HASH NTML?
+## CRACKEO DE LOS HASHES ENCONTRADOS
 
 Como podemos ver ya podríamos guardar los hashes e intentar crackearlos de manera offline. En mi caso voy a mostrar como crackeo con *`**hashcat**`* el hash del usuario Administrador que es el primero que aparece en la imagen.
 

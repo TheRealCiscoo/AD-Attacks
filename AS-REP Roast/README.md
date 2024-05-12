@@ -1,6 +1,8 @@
 # AS-REP Roast
 
-## ¿CÓMO SE PRODUCE?
+## ORIGEN DE UN AS-REP ROAST
+
+---
 
 La vulnerabilidad **ASREPRoast** ocurre cuando algún usuario del dominio tiene habilitado el atributo `DONT_REQ_PREAUTH` , este atributo permite que cualquiera pueda generar una respuesta `KRB_AS_REP` sin necesidad de realizar la autenticación previa que se realiza en el primer (`KRB_AS_REQ`) paso Kerberos.
 
@@ -10,9 +12,9 @@ Fuente: [https://blog.netwrix.com/what-is-kerberos/](https://blog.netwrix.com/wh
 
 En una respuesta `KRB_AS_REP` el **KDC** responde al usuario con el ticket **TGT** y **una clave de sesión cifrada** con la contraseña de dicho usuario, esta sesión es lo que necesitamos para crackearla offline con herramientas como **Jhon The Ripper** o **Hashcat**.
 
----
+## PREPARACIÓN DEL ENTORNO
 
-## PROVOCANDO LA VULNERABILIDAD
+---
 
 Para causar la vulnerabilidad tenemos que habilitar el `DONT_REQ_PREAUTH` a algún usuario del dominio.
 
@@ -30,9 +32,9 @@ Y vamos a la pestaña ***Cuenta***, en ***Opciones de cuenta*** marcamos ***No p
 
 Con estos pasos este usuario ya sería vulnerable a ASREP-Roast
 
----
+## EXPLOTACIÓN
 
-## ¿CÓMO EXPLOTARLA?
+---
 
 ### 1. Sin Credenciales Válidas
 
@@ -69,9 +71,9 @@ Ejemplo de uso:
 
 ![Untitled](images/Untitled%205.png)
 
----
+## CRACKEO DE LOS HASHES ENCONTRADOS
 
-## ¿CÓMO CRACKEAR LOS HASHES?
+---
 
 Para crackear los hashes obtenidos guardamos los hashes en un archivo y, en este caso, usamos ***`hashcat`*** para crackear el hash.
 
