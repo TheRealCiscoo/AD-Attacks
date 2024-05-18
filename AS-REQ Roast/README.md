@@ -1,6 +1,6 @@
 # AS-REQ Roast
 
-## ORIGEN DE UN AS-REQ ROAST
+# ¿Cómo surge un AS-REQ ROAST?
 
 ---
 
@@ -36,7 +36,13 @@ Buscaremos el paquete que contenga los valores cipher, CNameString y realm.
 
 ![Untitled](images/Untitled%204.png)
 
-## CRACKEO DE LOS HASHES ENCONTRADOS
+Con estos datos estructura estructuramos el hash como antes habíamos explicado.
+
+```bash
+$krb5pas$18$EAnderson$CISCO$3cd6b6e9b10de664f942f8e06bbf4ac171ea1d054642cf3bb3d814b2314c818c6d0a023524605a6320faf8ce8a2948e67f4de1519cb490d6
+```
+
+# Crackeo de los hashes encontrados
 
 ---
 
